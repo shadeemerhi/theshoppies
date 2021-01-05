@@ -56,10 +56,7 @@ export default function Nomination(props) {
       <Button 
         variant="contained" 
         className={classes.btn}
-        // onClick={() => props.setNominations({
-        //   ...props.nominations,
-        //   [props.result.Title]: props.result
-        // })}
+        onClick={() => props.deleteNomination(props.nomination.Title)}
         >
         Remove
       </Button>

@@ -25,6 +25,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Nominations(props) {
 
+  const deleteNomination = function(nomination) {
+    console.log(nomination);
+    console.log(props.nominations);
+    delete props.nominations[nomination];
+    props.setNominations({
+      ...props.nominations
+    })
+  }
+
   console.log(props.nominations);
   const titles = Object.keys(props.nominations);
   console.log(titles);
@@ -34,7 +43,7 @@ export default function Nominations(props) {
     <div className={classes.root}>
       <Typography className={classes.title}>Nominations</Typography>
       {titles.map(title => {
-        return <Nomination nomination={props.nominations[title]}/>
+        return <Nomination nomination={props.nominations[title]} deleteNomination={deleteNomination}/>
       })}
     </div>
   )
