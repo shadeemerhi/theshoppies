@@ -8,18 +8,33 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     margin: '1rem 0rem 0rem 1rem',
     padding: '1rem',
+    // height: '405px',
     borderRadius: '20px',
     boxShadow: "0px 2px 5px 0.5px #E3E3E3",
 
   },
 
-  title: {
+  text: {
     fontFamily: 'montserrat',
+  },
+  
+
+  titleContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+
+  title: {
     fontSize: '20pt',
     fontWeight: '700',
     marginBottom: '0.5rem',
     borderBottom: '2px solid #F77737'
   },
+
+  counter: {
+    fontSize: '16pt'
+  }
 
 }));
 
@@ -41,7 +56,10 @@ export default function Nominations(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography className={classes.title}>Nominations</Typography>
+      <div className={classes.titleContainer}>
+        <Typography className={`${classes.text} ${classes.title}`}>Nominations</Typography>
+        <Typography className={`${classes.text} ${classes.counter}`}>{titles.length}/5</Typography>
+      </div>
       {titles.map(title => {
         return (
           <Nomination 
