@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Results(props) {
 
   const classes = useStyles();
-  console.log(props);
+  console.log(props.nominations);
 
   return (
     <div className={classes.root}>
@@ -59,7 +59,8 @@ export default function Results(props) {
           <Result 
             key={index} 
             result={result} 
-            nominations={props.nominations} 
+            nominations={props.nominations}
+            isNominated={props.nominations[result.Title]}
             setNominations={props.setNominations}
             /> 
           )

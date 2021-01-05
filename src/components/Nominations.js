@@ -43,7 +43,12 @@ export default function Nominations(props) {
     <div className={classes.root}>
       <Typography className={classes.title}>Nominations</Typography>
       {titles.map(title => {
-        return <Nomination nomination={props.nominations[title]} deleteNomination={deleteNomination}/>
+        return (
+          <Nomination 
+            nomination={props.nominations[title]}
+            deleteNomination={deleteNomination}
+            />
+          )
       })}
     </div>
   )

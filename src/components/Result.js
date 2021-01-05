@@ -1,6 +1,7 @@
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +44,10 @@ const useStyles = makeStyles((theme) => ({
       color: 'white',
       background: '#F77737'
     }
+  },
+
+  check: {
+    fontSize: '40pt'
   }
 
 
@@ -51,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Result(props) {
 
+  console.log(props.isNominated);
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -58,16 +65,19 @@ export default function Result(props) {
         <Typography className={`${classes.text} ${classes.title}`}>{props.result.Title}</Typography>
         <Typography className={`${classes.text} ${classes.year}`}>{props.result.Year}</Typography>
       </div>
-      <Button 
-        variant="contained" 
-        className={classes.btn}
-        onClick={() => props.setNominations({
-          ...props.nominations,
-          [props.result.Title]: props.result
-        })}
-        >
-        Nominate
-      </Button>
+      {!props.isNominated ?
+        <Button 
+          variant="contained" 
+          className={classes.btn}
+          onClick={() => props.setNominations({
+            ...props.nominations,
+            [props.result.Title]: props.result
+          })}
+          >
+          Nominate
+        </Button>
+        : <CheckCircleOutlineIcon className={classes.check}/>
+      }
     </div>
   )
 }
