@@ -4,7 +4,7 @@ import axios from 'axios';
 export const useApplicationData = function() {
 
   const [searchResults, setSearchResults] = useState([]);
-  const [searchString, setSearchString] = useState('wolf');
+  const [searchString, setSearchString] = useState('');
   const [error, setError] = useState('');
 
   const apiKey = process.env.REACT_APP_API_KEY
@@ -21,9 +21,11 @@ export const useApplicationData = function() {
   }, [])
 
 
-
+  console.log('string', searchString);
   return {
-    searchResults
+    searchResults,
+    searchString,
+    setSearchString
   }
 
 }

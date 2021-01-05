@@ -9,6 +9,7 @@ import Nominations from './components/Nominations';
 const useStyles = makeStyles((theme) => ({
 
   root: {
+    padding: '100px',
     border: '1px solid red'
   }
 }));
@@ -18,7 +19,9 @@ export default function App() {
   const classes = useStyles();
 
   const {
-    searchResults
+    searchResults,
+    searchString,
+    setSearchString
   } = useApplicationData();
   
   console.log(searchResults);
@@ -27,12 +30,15 @@ export default function App() {
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12}>
-        <Search />
+        <Search 
+          searchString={searchString} 
+          setSearchString ={setSearchString}
+        />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Results />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Nominations />
       </Grid>
     </Grid>
