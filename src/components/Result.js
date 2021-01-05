@@ -33,15 +33,15 @@ const useStyles = makeStyles((theme) => ({
 
   btn: {
     fontFamily: 'montserrat',
-    background: '#F77737',
+    background: 'white',
     borderRadius: '20px',
-    color: 'white',
+    color: '#F77737',
     border: '1px solid #F77737',
     transition: '0.2s ease-in-out',
     '&:hover': {
       border: '1px solid #F77737',
-      color: '#F77737',
-      background: 'white'
+      color: 'white',
+      background: '#F77737'
     }
   }
 

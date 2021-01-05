@@ -5,20 +5,40 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    margin: '1rem 0rem 0rem 1rem',
-    padding: '1rem',
-    borderRadius: '20px',
-    boxShadow: "0px 2px 5px 0.5px #E3E3E3",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: '1rem',
+    borderBottom: '1px solid #E3E3E3'
 
+  },
+
+  text: {
+    fontFamily: 'montserrat'
   },
 
   title: {
-    fontFamily: 'montserrat',
-    fontSize: '20pt',
-    fontWeight: '700',
-    marginBottom: '0.5rem',
-    borderBottom: '2px solid #F77737'
+    fontSize: '13pt',
+    marginBottom: '0.5rem'
   },
+  
+  year: {
+    fontSize: '12pt',
+    color: 'grey',
+  },
+
+  btn: {
+    fontFamily: 'montserrat',
+    background: '#F77737',
+    borderRadius: '20px',
+    color: 'white',
+    border: '1px solid #F77737',
+    transition: '0.2s ease-in-out',
+    '&:hover': {
+      border: '1px solid #F77737',
+      color: '#F77737',
+      background: 'white'
+    }
+  }
 
 }));
 

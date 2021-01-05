@@ -5,6 +5,7 @@ import Nomination from './Nomination';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    flexDirection: 'column',
     margin: '1rem 0rem 0rem 1rem',
     padding: '1rem',
     borderRadius: '20px',
