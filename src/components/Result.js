@@ -47,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   check: {
-    fontSize: '40pt'
+    fontSize: '40pt',
+    color: titles => titles.length === 5 ? '#1DA1F2' : 'grey'
   }
 
 
@@ -56,16 +57,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Result(props) {
 
-  console.log(props.isNominated);
+  console.log(props.nominations);
 
-  const classes = useStyles();
+  const classes = useStyles(Object.keys(props.nominations));
   return (
     <div className={classes.root}>
       <div className={classes.infoContainer}>
         <Typography className={`${classes.text} ${classes.title}`}>{props.result.Title}</Typography>
         <Typography className={`${classes.text} ${classes.year}`}>{props.result.Year}</Typography>
       </div>
-      {!props.isNominated ?
+      {!props.isNominated && !props.maxNominations &&
         <Button 
           variant="contained" 
           className={classes.btn}
@@ -76,8 +77,8 @@ export default function Result(props) {
           >
           Nominate
         </Button>
-        : <CheckCircleOutlineIcon className={classes.check}/>
       }
+      {props.isNominated && <CheckCircleOutlineIcon className={classes.check}/>}
     </div>
   )
 }

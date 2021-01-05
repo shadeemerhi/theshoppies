@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Nomination from './Nomination';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +26,17 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
 
+  titleMain: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+
+  check: {
+    fontSize: '28pt',
+    marginLeft: '1rem',
+    color: '#1DA1F2'
+  },
+
   title: {
     fontSize: '20pt',
     fontWeight: '700',
@@ -32,8 +44,10 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '2px solid #F77737'
   },
 
+
   counter: {
-    fontSize: '16pt'
+    fontSize: '20pt',
+    color: titles => titles.length === 5 ? '#1DA1F2' : 'black'
   }
 
 }));
@@ -53,12 +67,18 @@ export default function Nominations(props) {
   const titles = Object.keys(props.nominations);
   console.log(titles);
 
-  const classes = useStyles();
+  const classes = useStyles(titles);
+
   return (
     <div className={classes.root}>
       <div className={classes.titleContainer}>
-        <Typography className={`${classes.text} ${classes.title}`}>Nominations</Typography>
-        <Typography className={`${classes.text} ${classes.counter}`}>{titles.length}/5</Typography>
+        <div className={classes.titleMain}>
+          <Typography className={`${classes.text} ${classes.title}`}>Nominations</Typography>
+          {titles.length === 5 && <CheckCircleOutlineIcon className={classes.check}/>}
+        </div>
+        <div className={classes.titleCounter}>
+          <Typography className={`${classes.text} ${classes.counter}`}>{titles.length}/5</Typography>
+        </div>
       </div>
       {titles.map(title => {
         return (

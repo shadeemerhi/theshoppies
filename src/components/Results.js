@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '1rem 1rem 0rem 0rem',
     // border: '1px solid red',
     padding: '1rem',
-    height: '500px',
+    // height: '500px',
     borderRadius: '20px',
     boxShadow: "0px 2px 5px 0.5px #E3E3E3"
   },
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'none'
     }
   },
-  
+
   title: {
     fontSize: '20pt',
     fontWeight: '700',
@@ -58,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Results(props) {
 
   const classes = useStyles();
-  console.log(props.nominations);
 
   return (
     <div className={classes.root}>
@@ -78,9 +77,10 @@ export default function Results(props) {
           return (
           <Result 
             key={index} 
-            result={result} 
+            result={result}
             nominations={props.nominations}
             isNominated={props.nominations[result.Title]}
+            maxNominations={Object.keys(props.nominations).length === 5}
             setNominations={props.setNominations}
             /> 
           )
