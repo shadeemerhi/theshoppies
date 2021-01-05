@@ -4,8 +4,9 @@ import axios from 'axios';
 export const useApplicationData = function() {
 
   const [searchResults, setSearchResults] = useState([]);
-  const [searchString, setSearchString] = useState('wolf');
+  const [searchString, setSearchString] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const apiKey = process.env.REACT_APP_API_KEY
   const baseUrl = process.env.REACT_APP_BASE_URL;
@@ -13,17 +14,21 @@ export const useApplicationData = function() {
   useEffect(() => {
     axios.get(`${baseUrl}${apiKey}&s=${searchString}`).then(response => {
       console.log(response.data);
-      if(response.data.Response === "True") {
+      setTimeout(() => {
+        setLoading(false);
         setSearchResults(response.data.Search);
-      }
+      }, 300);
     })
 
-  }, [])
-
+  }, [searchString])
 
 
   return {
-    searchResults
+    searchResults,
+    searchString,
+    setSearchString,
+    loading,
+    setLoading
   }
 
 }
