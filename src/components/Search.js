@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
   title: {
     fontFamily: 'montserrat',
+    fontSize: '20pt',
     fontWeight: '700',
     marginBottom: '0.5rem'
   },
@@ -19,15 +20,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     border: '1px solid #d4d4d4',
     padding: '3px',
-    borderRadius: '10px',
+    borderRadius: '20px',
     alignItems: 'center',
   },
 
   input: {
     fontSize: '12pt',
+    width: '100%',
     fontFamily: 'montserrat',
     height: '1.5rem',
     border: 'none',
+    borderRadius: '20px',
     "&:focus": {
       outline: "none",
     },

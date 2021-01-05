@@ -20,8 +20,6 @@ export const useApplicationData = function() {
 
   }, [])
 
-
-  console.log('string', searchString);
   return {
     searchResults,
     searchString,
