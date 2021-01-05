@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Nomination from './Nomination';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,12 +21,12 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function Nominations(props) {
+export default function Nomination() {
 
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography className={classes.title}>Nominations</Typography>
+      <Typography className={classes.title}>Nomination</Typography>
     </div>
   )
 }

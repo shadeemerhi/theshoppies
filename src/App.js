@@ -20,13 +20,12 @@ export default function App() {
   const {
     searchResults,
     searchString,
-    setSearchString,
     loading,
+    nominations,
+    setSearchString,
     setLoading,
+    setNominations
   } = useApplicationData();
-  
-  console.log(searchResults);
-
 
   return (
     <Grid container className={classes.root}>
@@ -38,10 +37,19 @@ export default function App() {
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Results searchResults={searchResults} searchString={searchString} loading={loading}/>
+        <Results 
+          searchResults={searchResults} 
+          searchString={searchString} 
+          setNominations={setNominations}
+          nominations={nominations}
+          loading={loading}
+        />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Nominations />
+        <Nominations 
+          nominations={nominations} 
+          setNominations={setNominations}
+        />
       </Grid>
     </Grid>
   );

@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Result(props) {
 
-  console.log(props.result);
+  console.log(props);
 
   const classes = useStyles();
   return (
@@ -60,7 +60,16 @@ export default function Result(props) {
         <Typography className={`${classes.text} ${classes.title}`}>{props.result.Title}</Typography>
         <Typography className={`${classes.text} ${classes.year}`}>{props.result.Year}</Typography>
       </div>
-      <Button variant="contained" className={classes.btn}>Nominate</Button>
+      <Button 
+        variant="contained" 
+        className={classes.btn}
+        onClick={() => props.setNominations({
+          ...props.nominations,
+          [props.result.Title]: props.result
+        })}
+        >
+        Nominate
+      </Button>
     </div>
   )
 }

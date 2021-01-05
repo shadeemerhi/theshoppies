@@ -10,13 +10,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '1rem 1rem 0rem 0rem',
     padding: '1rem',
     borderRadius: '20px',
-    boxShadow: "0px 2px 5px 0.5px #E3E3E3",
-    // height: '500px',
-    // overflow: 'scroll',
-    // overflowX: 'hidden',
-    // '&::-webkit-scrollbar': {
-    //   display: 'none'
-    // }
+    boxShadow: "0px 2px 5px 0.5px #E3E3E3"
   },
 
   resultsContainer: {
@@ -51,6 +45,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Results(props) {
 
   const classes = useStyles();
+  console.log(props);
+
   return (
     <div className={classes.root}>
       <div className={classes.titleContainer}>
@@ -59,7 +55,14 @@ export default function Results(props) {
       </div>
       <div className={classes.resultsContainer}>
         {props.searchResults && props.searchResults.map((result, index) => {
-          return <Result key={index} result={result}/> 
+          return (
+          <Result 
+            key={index} 
+            result={result} 
+            nominations={props.nominations} 
+            setNominations={props.setNominations}
+            /> 
+          )
         })}
         {!props.searchResults && !props.loading && props.searchString.length !== 0 && 
           <Typography style={{fontFamily: 'montserrat'}}>No Results</Typography>
