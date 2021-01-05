@@ -1,13 +1,11 @@
+import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    border: '1px solid blue',
-    margin: '1rem 0rem 0rem 1rem',
-    padding: '1rem'
-
+    flexDirection: 'column',
+    border: '1px solid green',
   },
 
   title: {
@@ -19,12 +17,14 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function Nominations() {
+export default function Result(props) {
+
+  console.log(props.result);
 
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography className={classes.title}>Nominations</Typography>
+      <Typography>{props.result.Title}</Typography>
     </div>
   )
 }

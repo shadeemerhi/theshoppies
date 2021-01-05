@@ -21,7 +21,9 @@ export default function App() {
   const {
     searchResults,
     searchString,
-    setSearchString
+    setSearchString,
+    loading,
+    setLoading,
   } = useApplicationData();
   
   console.log(searchResults);
@@ -33,10 +35,11 @@ export default function App() {
         <Search 
           searchString={searchString} 
           setSearchString ={setSearchString}
+          setLoading={setLoading}
         />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Results />
+        <Results searchResults={searchResults} searchString={searchString} loading={loading}/>
       </Grid>
       <Grid item xs={12} sm={6}>
         <Nominations />

@@ -6,7 +6,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '1rem 0rem 1rem 0rem'
+    margin: '1rem 0rem 1rem 0rem',
+    padding: '1rem'
   },
 
   title: {
@@ -56,7 +57,10 @@ export default function Search(props) {
           type="text"
           placeholder="Enter a movie title"
           value={props.searchString}
-          onChange={event => props.setSearchString(event.target.value)}
+          onChange={event => {
+            props.setLoading(true);
+            props.setSearchString(event.target.value)
+          }}
         />
       </div>
     </div>
