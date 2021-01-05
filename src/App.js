@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
 
   root: {
     padding: '100px',
-    border: '1px solid red'
   }
 }));
 

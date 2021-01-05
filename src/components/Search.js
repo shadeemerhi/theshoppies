@@ -7,19 +7,23 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     margin: '1rem 0rem 1rem 0rem',
-    padding: '1rem'
+    padding: '1rem',
+    borderRadius: '20px',
+    boxShadow: "0px 2px 5px 0.5px #E3E3E3",
   },
 
   title: {
     fontFamily: 'montserrat',
     fontSize: '20pt',
     fontWeight: '700',
-    marginBottom: '0.5rem'
+    marginBottom: '0.5rem',
+    borderBottom: '2px solid #F77737',
+    width: '205px'
   },
 
   inputContainer: {
     display: 'flex',
-    border: '1px solid #d4d4d4',
+    border: '1px solid #E3E3E3',
     padding: '3px',
     borderRadius: '20px',
     alignItems: 'center',

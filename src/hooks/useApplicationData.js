@@ -17,7 +17,7 @@ export const useApplicationData = function() {
       setTimeout(() => {
         setLoading(false);
         setSearchResults(response.data.Search);
-      }, 300)
+      }, 300);
     })
 
   }, [searchString])
