@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,12 +22,27 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function Nomination() {
+export default function Nomination(props) {
+
+  console.log(props);
 
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Typography className={classes.title}>Nomination</Typography>
+      <div className={classes.infoContainer}>
+        <Typography className={`${classes.text} ${classes.title}`}>{props.nomination.Title}</Typography>
+        <Typography className={`${classes.text} ${classes.year}`}>{props.nomination.Year}</Typography>
+      </div>
+      <Button 
+        variant="contained" 
+        className={classes.btn}
+        // onClick={() => props.setNominations({
+        //   ...props.nominations,
+        //   [props.result.Title]: props.result
+        // })}
+        >
+        Remove
+      </Button>
     </div>
   )
 }

@@ -24,10 +24,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Nominations(props) {
 
+  console.log(props.nominations);
+  const titles = Object.keys(props.nominations);
+  console.log(titles);
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Typography className={classes.title}>Nominations</Typography>
+      {titles.map(title => {
+        return <Nomination nomination={props.nominations[title]}/>
+      })}
     </div>
   )
 }

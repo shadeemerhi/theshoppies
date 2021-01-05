@@ -51,8 +51,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Result(props) {
 
-  console.log(props);
-
   const classes = useStyles();
   return (
     <div className={classes.root}>
