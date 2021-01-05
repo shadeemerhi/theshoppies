@@ -14,11 +14,11 @@ export const useApplicationData = function() {
     axios.get(`${baseUrl}${apiKey}&s=${searchString}`).then(response => {
       console.log(response.data);
       if(response.data.Response === "True") {
-        console.log(response.data.Search)
+        setSearchResults(response.data.Search);
       }
     })
 
-  })
+  }, [])
 
 
 

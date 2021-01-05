@@ -1,6 +1,5 @@
 import { useApplicationData } from './hooks/useApplicationData';
 
-
 export default function App() {
 
   const {
