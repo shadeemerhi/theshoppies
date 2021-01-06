@@ -1,6 +1,6 @@
 # The Shoppies
 
-Shoppies allows users to search and nominate their favorite movies for the Shoppies awards! This is a front-end project built using React and Material UI.
+Shoppies allows users to search and nominate their favorite movies for the Shoppies awards! This is a front-end project built using React and Material UI, and utilizes the OMBd API for movie searching.
 
 ## Dependencies
 
