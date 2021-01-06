@@ -2,6 +2,8 @@
 
 Shoppies allows users to search and nominate their favorite movies for the Shoppies awards! This is a front-end project built using React and Material UI, and utilizes the OMBd API for movie searching.
 
+The live site can be viewed [here](https://sharp-payne-6b1a4b.netlify.app/)
+
 ## Dependencies
 
 - React
