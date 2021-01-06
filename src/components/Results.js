@@ -8,19 +8,32 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     margin: '1rem 1rem 0rem 0rem',
+    // border: '1px solid red',
     padding: '1rem',
-    borderRadius: '20px',
-    boxShadow: "0px 2px 5px 0.5px #E3E3E3",
     // height: '500px',
-    // overflow: 'scroll',
-    // overflowX: 'hidden',
-    // '&::-webkit-scrollbar': {
-    //   display: 'none'
-    // }
+    borderRadius: '20px',
+    boxShadow: "0px 2px 5px 0.5px #E3E3E3"
+  },
+
+  headerContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    // alignItems: 'center'
+  },
+
+  text: {
+    fontFamily: 'montserrat'
   },
 
   resultsContainer: {
-    height: '500px',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  
+  searchResults: {
+    // display: 'flex',
+    // flexDirection: 'column',
+    // height: '500px',
     overflow: 'scroll',
     overflowX: 'hidden',
     '&::-webkit-scrollbar': {
@@ -28,16 +41,10 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
-  titleContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-
   title: {
-    fontFamily: 'montserrat',
     fontSize: '20pt',
     fontWeight: '700',
+    width: '100%',
     marginBottom: '0.5rem',
     borderBottom: '2px solid #F77737'
   },
@@ -51,19 +58,36 @@ const useStyles = makeStyles((theme) => ({
 export default function Results(props) {
 
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
-      <div className={classes.titleContainer}>
-        <Typography className={classes.title}>Results</Typography>
-        {props.loading && <CircularProgress className={classes.spinner} size={30}/>}
+      <div className={classes.headerContainer}>
+        <div className={classes.resultsContainer}>
+          <Typography className={`${classes.text} ${classes.title}`}>Results</Typography>
+        </div>
+        <div>
+          {props.loading && <CircularProgress className={classes.spinner} size={35}/>}
+        </div>
       </div>
-      <div className={classes.resultsContainer}>
-        {props.searchResults && props.searchResults.map((result, index) => {
-          return <Result key={index} result={result}/> 
-        })}
-        {!props.searchResults && !props.loading && props.searchString.length !== 0 && 
-          <Typography style={{fontFamily: 'montserrat'}}>No Results</Typography>
+      <div className={classes.searchResults}>
+        {!props.loading && props.searchString.length !== 0 && 
+          <Typography className={classes.text}>Results for "{props.searchString}"</Typography>
         }
+        {props.searchResults && props.searchResults.map((result, index) => {
+          return (
+          <Result 
+            key={index} 
+            result={result}
+            nominations={props.nominations}
+            isNominated={props.nominations[result.Title]}
+            maxNominations={Object.keys(props.nominations).length === 5}
+            setNominations={props.setNominations}
+            /> 
+          )
+        })}
+        {/* {!props.searchResults && !props.loading && props.searchString.length !== 0 && 
+          <Typography style={{fontFamily: 'montserrat'}}>No Results</Typography>
+        } */}
       </div>
     </div>
   )

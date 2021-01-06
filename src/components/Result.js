@@ -1,6 +1,7 @@
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,16 +34,21 @@ const useStyles = makeStyles((theme) => ({
 
   btn: {
     fontFamily: 'montserrat',
-    background: '#F77737',
+    background: 'white',
     borderRadius: '20px',
-    color: 'white',
+    color: '#F77737',
     border: '1px solid #F77737',
     transition: '0.2s ease-in-out',
     '&:hover': {
       border: '1px solid #F77737',
-      color: '#F77737',
-      background: 'white'
+      color: 'white',
+      background: '#F77737'
     }
+  },
+
+  check: {
+    fontSize: '40pt',
+    color: titles => titles.length === 5 ? '#1DA1F2' : 'grey'
   }
 
 
@@ -51,16 +57,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Result(props) {
 
-  console.log(props.result);
+  console.log(props.nominations);
 
-  const classes = useStyles();
+  const classes = useStyles(Object.keys(props.nominations));
   return (
     <div className={classes.root}>
       <div className={classes.infoContainer}>
         <Typography className={`${classes.text} ${classes.title}`}>{props.result.Title}</Typography>
         <Typography className={`${classes.text} ${classes.year}`}>{props.result.Year}</Typography>
       </div>
-      <Button variant="contained" className={classes.btn}>Nominate</Button>
+      {!props.isNominated && !props.maxNominations &&
+        <Button 
+          variant="contained" 
+          className={classes.btn}
+          onClick={() => props.setNominations({
+            ...props.nominations,
+            [props.result.Title]: props.result
+          })}
+          >
+          Nominate
+        </Button>
+      }
+      {props.isNominated && <CheckCircleOutlineIcon className={classes.check}/>}
     </div>
   )
 }
