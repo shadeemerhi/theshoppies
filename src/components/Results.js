@@ -1,6 +1,7 @@
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import SearchIcon from '@material-ui/icons/Search';
 import Result from './Result';
 
 const useStyles = makeStyles((theme) => ({
@@ -8,9 +9,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     margin: '1rem 1rem 0rem 0rem',
-    // border: '1px solid red',
     padding: '1rem',
-    // height: '500px',
     borderRadius: '20px',
     boxShadow: "0px 2px 5px 0.5px #E3E3E3"
   },
@@ -18,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   headerContainer: {
     display: 'flex',
     justifyContent: 'space-between',
-    // alignItems: 'center'
   },
 
   text: {
@@ -31,9 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   
   searchResults: {
-    // display: 'flex',
-    // flexDirection: 'column',
-    // height: '500px',
+    minHeight: '400px',
     overflow: 'scroll',
     overflowX: 'hidden',
     '&::-webkit-scrollbar': {
@@ -51,7 +47,21 @@ const useStyles = makeStyles((theme) => ({
 
   spinner: {
     color: '#F77737'
-  }
+  },
+
+  iconContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '400px',
+  },
+
+  icon: {
+    fontSize: '200pt',
+    color: '#E3E3E3'
+  },
+
 
 }));
 
@@ -63,31 +73,36 @@ export default function Results(props) {
     <div className={classes.root}>
       <div className={classes.headerContainer}>
         <div className={classes.resultsContainer}>
-          <Typography className={`${classes.text} ${classes.title}`}>Results</Typography>
+          <Typography className={`${classes.text} ${classes.title}`}>Search Results</Typography>
         </div>
         <div>
           {props.loading && <CircularProgress className={classes.spinner} size={35}/>}
         </div>
       </div>
       <div className={classes.searchResults}>
-        {!props.loading && props.searchString.length !== 0 && 
-          <Typography className={classes.text}>Results for "{props.searchString}"</Typography>
+        {props.searchString.length !== 0 ? <div>
+          {!props.loading && 
+            <Typography className={classes.text}>Results for "{props.searchString}"</Typography>
+          }
+          {props.searchResults && props.searchResults.map((result, index) => {
+            return (
+            <Result 
+              key={index} 
+              result={result}
+              nominations={props.nominations}
+              isNominated={props.nominations[result.Title]}
+              maxNominations={Object.keys(props.nominations).length === 5}
+              setNominations={props.setNominations}
+              /> 
+            )
+          })}
+        </div> 
+        : 
+        <div className={classes.iconContainer}>
+          <Typography className={classes.text}>Nominate your favorite movies!</Typography>
+          <SearchIcon className={classes.icon}/>
+        </div>
         }
-        {props.searchResults && props.searchResults.map((result, index) => {
-          return (
-          <Result 
-            key={index} 
-            result={result}
-            nominations={props.nominations}
-            isNominated={props.nominations[result.Title]}
-            maxNominations={Object.keys(props.nominations).length === 5}
-            setNominations={props.setNominations}
-            /> 
-          )
-        })}
-        {/* {!props.searchResults && !props.loading && props.searchString.length !== 0 && 
-          <Typography style={{fontFamily: 'montserrat'}}>No Results</Typography>
-        } */}
       </div>
     </div>
   )
