@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '1rem 0rem 1rem 0rem',
+    margin: '1rem',
     padding: '1rem',
     borderRadius: '20px',
     boxShadow: "0px 2px 5px 0.5px #E3E3E3",

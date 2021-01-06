@@ -9,7 +9,13 @@ import Nominations from './components/Nominations';
 const useStyles = makeStyles((theme) => ({
 
   root: {
-    padding: '100px',
+    padding: '20px',
+    [theme.breakpoints.up('sm')]: {
+      padding: '50px'
+    },
+    [theme.breakpoints.up('md')]: {
+      padding: '80px'
+    }
   }
 }));
 

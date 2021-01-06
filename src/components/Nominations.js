@@ -8,18 +8,29 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '1rem 0rem 0rem 1rem',
+    // margin: '1rem 0rem 0rem 1rem',
+    margin: '1rem',
     padding: '1rem',
     borderRadius: '20px',
     boxShadow: "0px 2px 5px 0.5px #E3E3E3",
-
   },
 
   text: {
     fontFamily: 'montserrat',
+    fontSize: '16pt',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '18pt'
+    }
+  },
+
+  prompt: {
+    textAlign: 'center',
+    fontSize: '14pt',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16pt'
+    }
   },
   
-
   titleContainer: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -44,8 +55,14 @@ const useStyles = makeStyles((theme) => ({
   },
 
   icon: {
-    fontSize: '200pt',
-    color: '#E3E3E3'
+    fontSize: '140pt',
+    color: '#E3E3E3',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '160pt'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '200pt'
+    }
   },
 
   check: {
@@ -55,15 +72,17 @@ const useStyles = makeStyles((theme) => ({
   },
 
   title: {
-    fontSize: '20pt',
     fontWeight: '700',
     marginBottom: '0.5rem',
-    borderBottom: '2px solid #F77737'
+    borderBottom: '2px solid #F77737',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '20pt'
+    }
+
   },
 
 
   counter: {
-    fontSize: '20pt',
     color: titles => titles.length === 5 ? '#1DA1F2' : 'black'
   }
 
@@ -109,7 +128,7 @@ export default function Nominations(props) {
             )
         }) : 
         <div className={classes.iconContainer}>
-          <Typography className={classes.text}>Nominate your favorite movies!</Typography>
+          <Typography className={`${classes.text} ${classes.prompt}`}>Nominate your favorite movies!</Typography>
           <MovieFilterIcon className={classes.icon}/>
         </div>
       }
