@@ -5,7 +5,7 @@ export const useApplicationData = function() {
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchString, setSearchString] = useState('');
-  const [nominations, setNominations] = useState({});
+  const [nominations, setNominations] = useState({})
   const [loading, setLoading] = useState(false);
 
   const apiKey = process.env.REACT_APP_API_KEY

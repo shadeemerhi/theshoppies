@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Nomination from './Nomination';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import MovieFilterIcon from '@material-ui/icons/MovieFilter';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     margin: '1rem 0rem 0rem 1rem',
     padding: '1rem',
-    // height: '405px',
     borderRadius: '20px',
     boxShadow: "0px 2px 5px 0.5px #E3E3E3",
 
@@ -23,12 +23,29 @@ const useStyles = makeStyles((theme) => ({
   titleContainer: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   titleMain: {
     display: 'flex',
     alignItems: 'center'
+  },
+
+  nominationsContainer: {
+    height: '400px',
+  },
+
+  iconContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
+
+  icon: {
+    fontSize: '200pt',
+    color: '#E3E3E3'
   },
 
   check: {
@@ -61,7 +78,9 @@ export default function Nominations(props) {
     props.setNominations({
       ...props.nominations
     })
+
   }
+
 
   console.log(props.nominations);
   const titles = Object.keys(props.nominations);
@@ -80,14 +99,21 @@ export default function Nominations(props) {
           <Typography className={`${classes.text} ${classes.counter}`}>{titles.length}/5</Typography>
         </div>
       </div>
-      {titles.map(title => {
-        return (
-          <Nomination 
-            nomination={props.nominations[title]}
-            deleteNomination={deleteNomination}
-            />
-          )
-      })}
+      <div className={classes.nominationsContainer}>
+        {titles.length !== 0 ? titles.map(title => {
+          return (
+            <Nomination 
+              nomination={props.nominations[title]}
+              deleteNomination={deleteNomination}
+              />
+            )
+        }) : 
+        <div className={classes.iconContainer}>
+          <Typography className={classes.text}>Nominate your favorite movies!</Typography>
+          <MovieFilterIcon className={classes.icon}/>
+        </div>
+      }
+      </div>
     </div>
   )
 }
