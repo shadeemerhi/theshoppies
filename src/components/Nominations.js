@@ -87,8 +87,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Nominations(props) {
 
   const deleteNomination = function(nomination) {
-    console.log(nomination);
-    console.log(props.nominations);
     delete props.nominations[nomination];
     props.setNominations({
       ...props.nominations

@@ -22,7 +22,7 @@ export const useApplicationData = function() {
       }, 300);
     })
 
-  }, [searchString]);
+  }, [searchString, apiKey, baseUrl]);
 
   return {
     searchResults,
