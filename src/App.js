@@ -45,7 +45,7 @@ export default function App() {
 
   return (
     <Grid container className={classes.root}>
-      <Typography className={classes.title}>App Title</Typography>
+      <Typography className={classes.title}>The Shoppies</Typography>
       <Grid item xs={12}>
         <Search 
           searchString={searchString} 

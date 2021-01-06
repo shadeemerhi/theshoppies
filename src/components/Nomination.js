@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     marginTop: '1rem',
     borderBottom: '1px solid #E3E3E3'
-
   },
 
   text: {
@@ -39,12 +38,9 @@ const useStyles = makeStyles((theme) => ({
       background: 'white'
     }
   }
-
 }));
 
 export default function Nomination(props) {
-
-  console.log(props);
 
   const classes = useStyles();
   return (

@@ -8,7 +8,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    // margin: '1rem 0rem 0rem 1rem',
     margin: '1rem',
     padding: '1rem',
     borderRadius: '20px',
@@ -78,14 +77,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       fontSize: '20pt'
     }
-
   },
-
 
   counter: {
     color: titles => titles.length === 5 ? '#1DA1F2' : 'black'
   }
-
 }));
 
 export default function Nominations(props) {
@@ -97,14 +93,9 @@ export default function Nominations(props) {
     props.setNominations({
       ...props.nominations
     })
-
   }
 
-
-  console.log(props.nominations);
   const titles = Object.keys(props.nominations);
-  console.log(titles);
-
   const classes = useStyles(titles);
 
   return (

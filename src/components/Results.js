@@ -37,12 +37,20 @@ const useStyles = makeStyles((theme) => ({
 
   resultsContainer: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   
-  searchResults: {
+  mainContainer: {
     minHeight: '400px',
     overflow: 'scroll',
+    overflowX: 'hidden',
+    '&::-webkit-scrollbar': {
+      display: 'none'
+    }
+  },
+
+  searchContainer: {
+    height: '400px',
     overflowX: 'hidden',
     '&::-webkit-scrollbar': {
       display: 'none'
@@ -80,8 +88,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       fontSize: '200pt'
     }
-  },
-
+  }
 }));
 
 export default function Results(props) {
@@ -98,8 +105,8 @@ export default function Results(props) {
           {props.loading && <CircularProgress className={classes.spinner} size={35}/>}
         </div>
       </div>
-      <div className={classes.searchResults}>
-        {props.searchString.length !== 0 ? <div>
+      <div className={classes.mainContainer}>
+        {props.searchString.length !== 0 ? <div className={classes.searchContainer}>
           {!props.loading && 
             <Typography className={classes.text}>Results for "{props.searchString}"</Typography>
           }

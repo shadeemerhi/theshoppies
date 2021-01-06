@@ -50,14 +50,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '40pt',
     color: titles => titles.length === 5 ? '#1DA1F2' : 'grey'
   }
-
-
-
 }));
 
 export default function Result(props) {
-
-  console.log(props.nominations);
 
   const classes = useStyles(Object.keys(props.nominations));
   return (

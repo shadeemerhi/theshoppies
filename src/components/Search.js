@@ -44,8 +44,7 @@ const useStyles = makeStyles((theme) => ({
       color: '#838383'
 
     }
-  },
-
+  }
 }));
 
 export default function Search(props) {

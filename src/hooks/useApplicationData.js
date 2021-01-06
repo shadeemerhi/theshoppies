@@ -3,27 +3,26 @@ import axios from 'axios';
 
 export const useApplicationData = function() {
 
+  // Defining application state
   const [searchResults, setSearchResults] = useState([]);
   const [searchString, setSearchString] = useState('');
-  const [nominations, setNominations] = useState({})
+  const [nominations, setNominations] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const apiKey = process.env.REACT_APP_API_KEY
+  // Environment variables
+  const apiKey = process.env.REACT_APP_API_KEY;
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
+  // API request each time the search string changes
   useEffect(() => {
     axios.get(`${baseUrl}${apiKey}&s=${searchString}`).then(response => {
-      console.log(response.data);
       setTimeout(() => {
         setLoading(false);
         setSearchResults(response.data.Search);
       }, 300);
     })
 
-  }, [searchString])
-
-
-  console.log('noms', nominations);
+  }, [searchString]);
 
   return {
     searchResults,
@@ -33,6 +32,5 @@ export const useApplicationData = function() {
     setSearchString,
     setLoading,
     setNominations
-  }
-
+  };
 }
